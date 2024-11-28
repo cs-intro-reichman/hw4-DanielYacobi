@@ -14,14 +14,14 @@ public class ArrCharOps {
         System.out.println(indexOf(arr1,'l',3)); 
         System.out.println(lastIndexOf(arr1, 'l'));
         System.out.println(concat(arr1, arr2));
-        System.out.println(subArray(arr2, 2, 9)); /* 
+        System.out.println(subArray(arr2, 2, 9)); 
         System.out.println(compareTo("abcd", "abcd"));
         System.out.println(compareTo("abc", "abcd"));
         System.out.println(compareTo("abw", "abcd"));
         System.out.println(compareTo("Abcd", "a"));
         System.out.println(compareTo("apple", "banana"));
         System.out.println(compareTo("apple", "applepie"));
-        System.out.println(compareTo("Zoo", "zoo")); */
+        System.out.println(compareTo("Zoo", "zoo")); 
         System.out.println(hashCode(arr1));
         System.out.println(hashCode(arr2)); 
     }
@@ -122,7 +122,7 @@ public class ArrCharOps {
     public static long hashCode(char[] arr) {
         long hash = 0;
         for (int i = 0; i < arr.length; i++) {
-            hash = hash + ((int)arr[i] * (int)Math.pow(7, arr.length-i+1));
+            hash = hash + ((int)arr[i] * (int)Math.pow(7, arr.length-i-1));
         }
         return hash;
     }
@@ -153,8 +153,33 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
-        if (str1.length() == 0 || str2.length() == 0)
-            return -2;
+        if (str1.length() > str2.length()) {
+            for (int i = 0; i < str2.length(); i++) {
+                if ((int)str1.charAt(i) < 97 || (int)str1.charAt(i) > 122)
+                    return -2;
+                if ((int)str2.charAt(i) < 97 || (int)str2.charAt(i) > 122)
+                    return -2;
+                if ((int)str1.charAt(i) > (int)str2.charAt(i)) 
+                    return 1;
+                if ((int)str1.charAt(i) < (int)str2.charAt(i))
+                    return -1;
+            }
+            return 1;
+        }
+        else {
+            for (int i = 0; i < str1.length(); i++) {
+                if ((int)str1.charAt(i) < 97 || (int)str1.charAt(i) > 122)
+                    return -2;
+                if ((int)str2.charAt(i) < 97 || (int)str2.charAt(i) > 122)
+                    return -2;
+                if ((int)str1.charAt(i) > (int)str2.charAt(i)) 
+                    return 1;
+                if ((int)str1.charAt(i) < (int)str2.charAt(i))
+                    return -1;
+            }
+            if (str1.length() < str2.length())
+                return -1;
+        }
         return 0;
     }
 }
