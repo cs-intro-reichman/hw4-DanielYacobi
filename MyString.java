@@ -32,6 +32,8 @@ public class MyString {
     public static boolean contains(String str1, String str2) {
         String low1 = lowerCase(str1);
         String low2 = lowerCase(str2);
+        if (low1.length() < low2.length())
+            return false;
         boolean isTrue = false;
         for (int i = 0; i < low1.length(); i++) {
             if (low1.charAt(i) == low2.charAt(0)) {
