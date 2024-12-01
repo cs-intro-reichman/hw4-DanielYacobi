@@ -21,7 +21,7 @@ public class MyString {
         String low = "";
         for (int i = 0; i < str.length(); i++) {
             if (str.charAt(i) >= 65 && str.charAt(i) <= 90)
-                low = low + (char)(str.charAt(i) + 32);
+                low = low + (char)(str.charAt(i) + 32); //converts from uppercase to lowercase
             else
                 low = low + str.charAt(i);
         }
@@ -30,13 +30,13 @@ public class MyString {
 
     /** If str1 contains str2, returns true; otherwise returns false. */
     public static boolean contains(String str1, String str2) {
-        if (str2.length() == 0)
+        if (str2.length() == 0) //every string contains ""
             return true;
-        if (str1.length() < str2.length())
+        if (str1.length() < str2.length()) //a string cannot contain a longer string
             return false;
         boolean isTrue = false;
         for (int i = 0; i < str1.length() - str2.length(); i++) {
-            if (str1.charAt(i) == str2.charAt(0)) {
+            if (str1.charAt(i) == str2.charAt(0)) { //will go over some checks to see if the first string contains the second one
                 isTrue = true;
                 for (int k = 0; k < str2.length(); k++) {
                     if (str1.charAt(k + i) != str2.charAt(k)) {
@@ -44,7 +44,7 @@ public class MyString {
                         break;
                     }
                 }
-                if (isTrue)
+                if (isTrue) //finished going over the second string and the value is still true
                     return isTrue;
             }
         }

@@ -45,10 +45,10 @@ public class ArrCharOps {
      *  returns true; Otherwise returns false.
      */
     public static boolean equals(char[] arr1, char[] arr2) {
-        if (arr1.length != arr2.length)
+        if (arr1.length != arr2.length) //should be the same length
             return false;
         for (int i = 0; i < arr1.length; i++) {
-            if (arr1[i] != arr2[i])
+            if (arr1[i] != arr2[i]) //checks if values in the same index are equal
                 return false;
         }
         return true;
@@ -68,7 +68,7 @@ public class ArrCharOps {
     /** Same as indexOf(char[], char), but starts the search in the given index.
      */
     public static int indexOf(char[] arr, char ch, int fromIndex) {
-        for (int i = fromIndex; i < arr.length; i++) {
+        for (int i = fromIndex; i < arr.length; i++) { //same but starts the loop from the given int
             if (arr[i] == ch)
                 return i;
         }
@@ -79,7 +79,7 @@ public class ArrCharOps {
      *  If no such character is found, returns -1.
      */
     public static int lastIndexOf(char[] arr, char ch) {
-        for (int i = arr.length-1; i >= 0; i--) {
+        for (int i = arr.length-1; i >= 0; i--) { //goes from end to beginning
             if (arr[i] == ch)
                 return i;
         }
@@ -92,9 +92,9 @@ public class ArrCharOps {
         char[] arr3 = new char[arr1.length+arr2.length];
         for (int i = 0; i < arr1.length + arr2.length; i++) {
             if (i < arr1.length)
-                arr3[i] = arr1[i];
+                arr3[i] = arr1[i]; //puts the first arrays values in
             else
-                arr3[i] = arr2[i - arr1.length];
+                arr3[i] = arr2[i - arr1.length]; //puts the second arrays values in
         } 
         return arr3;
     }
@@ -105,9 +105,9 @@ public class ArrCharOps {
      *  characters containing the characters "urge".
      */     
     public static char[] subArray(char[] arr, int beginIndex, int endIndex) {
-        char[] sub = new char[endIndex - beginIndex];
+        char[] sub = new char[endIndex - beginIndex]; //length will be subtraction of the given ints
         for (int i = beginIndex; i < endIndex; i++) {
-            sub[i - beginIndex] = arr[i];
+            sub[i - beginIndex] = arr[i]; //creates the new array
         }
         return sub;
     }
@@ -122,7 +122,7 @@ public class ArrCharOps {
     public static long hashCode(char[] arr) {
         long hash = 0;
         for (int i = 0; i < arr.length; i++) {
-            hash = hash + ((int)arr[i] * (int)Math.pow(7, arr.length-i-1));
+            hash = hash + ((int)arr[i] * (int)Math.pow(7, arr.length-i-1)); //hash code formula
         }
         return hash;
     }
@@ -153,13 +153,13 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
-        if (str1.length() == 0 || str2.length() == 0)
+        if (str1.length() == 0 || str2.length() == 0) //special case
             return -2;
         if (str1.length() > str2.length()) {
             for (int i = 0; i < str2.length(); i++) { 
-                if (str1.charAt(i) < 65 || str1.charAt(i) > 122 || (str1.charAt(i) > 90 && str1.charAt(i) < 97))
+                if (str1.charAt(i) < 65 || str1.charAt(i) > 122 || (str1.charAt(i) > 90 && str1.charAt(i) < 97)) //special notes
                     return -2;
-                if (str2.charAt(i) < 65 || str2.charAt(i) > 122 || (str2.charAt(i) > 90 && str2.charAt(i) < 97))
+                if (str2.charAt(i) < 65 || str2.charAt(i) > 122 || (str2.charAt(i) > 90 && str2.charAt(i) < 97)) //special notes
                     return -2;
                 if (str1.charAt(i) > str2.charAt(i))
                     return 1;
@@ -170,9 +170,9 @@ public class ArrCharOps {
         }
         else {
             for (int i = 0; i < str1.length(); i++) {
-                if (str1.charAt(i) < 65 || str1.charAt(i) > 122 || (str1.charAt(i) > 90 && str1.charAt(i) < 97))
+                if (str1.charAt(i) < 65 || str1.charAt(i) > 122 || (str1.charAt(i) > 90 && str1.charAt(i) < 97)) //special notes
                     return -2;
-                if (str2.charAt(i) < 65 || str2.charAt(i) > 122 || (str2.charAt(i) > 90 && str2.charAt(i) < 97))
+                if (str2.charAt(i) < 65 || str2.charAt(i) > 122 || (str2.charAt(i) > 90 && str2.charAt(i) < 97)) //special notes
                     return -2;
                 if (str1.charAt(i) > str2.charAt(i))
                     return 1;
@@ -182,6 +182,6 @@ public class ArrCharOps {
             if (str1.length() < str2.length())
                 return -1;
         }
-        return 0;
+        return 0; //if nothing was returned by now then the strings are equal
     }
 }
