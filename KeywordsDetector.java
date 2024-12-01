@@ -21,6 +21,56 @@ public class KeywordsDetector {
     // Iterates through all the sentences.
     // If a sentence contains one or more of the kewords, prints it.
     public static void detectAndPrint(String[] sentences, String[] keywords) {
-        // Replace this comment with your code
+        boolean found = false;
+        int sentencesLength = sentences.length;
+        int keywordsLength = keywords.length;
+        String str1;
+        String str2;
+        for (int i = 0; i < sentencesLength; i++) {
+            str1 = lowerCase(sentences[i]);
+            for (int k = 0; k < keywordsLength; k++) {
+                str2 = lowerCase(keywords[k]);
+                if (contains(str1, str2) && !found) {
+                    System.out.println(sentences[i]);
+                    found = false;
+                    break;
+                }
+            }
+        }
+    }
+    
+    //Same program as the one from Q3 (MyString)
+    public static String lowerCase(String str) {
+        String low = "";
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) >= 65 && str.charAt(i) <= 90)
+                low = low + (char)(str.charAt(i) + 32);
+            else
+                low = low + str.charAt(i);
+        }
+        return low;
+    }
+    
+    //Same program as the one from Q3 (MyString)
+    public static boolean contains(String str1, String str2) {
+        if (str2.length() == 0)
+            return true;
+        if (str1.length() < str2.length())
+            return false;
+        boolean isTrue = false;
+        for (int i = 0; i < str1.length() - str2.length(); i++) {
+            if (str1.charAt(i) == str2.charAt(0)) {
+                isTrue = true;
+                for (int k = 0; k < str2.length(); k++) {
+                    if (str1.charAt(k + i) != str2.charAt(k)) {
+                        isTrue = false;
+                        break;
+                    }
+                }
+                if (isTrue)
+                    return isTrue;
+            }
+        }
+        return isTrue;
     }
 }
